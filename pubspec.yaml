@@ -3,7 +3,7 @@
 #
 
 name: 'regnify_core'
-version: '1.0.3'
+version: '1.0.4'
 description: 'Auto-generated package for regnify platform'
 homepage: 'https://regnify.com'
 environment:
