@@ -42,6 +42,7 @@ part 'model/many_roles_out.dart';
 part 'model/many_system_scope_out.dart';
 part 'model/many_user_roles_out.dart';
 part 'model/many_users_in_db.dart';
+part 'model/mini_file_object_out.dart';
 part 'model/mini_role_out.dart';
 part 'model/mini_user_role_out.dart';
 part 'model/order_by.dart';

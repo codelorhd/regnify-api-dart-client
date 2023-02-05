@@ -16,6 +16,7 @@ class ProfileOut {
     required this.lastName,
     required this.firstName,
     required this.avatarUrl,
+    this.photoFile,
   });
 
   String lastName;
@@ -24,27 +25,42 @@ class ProfileOut {
 
   String avatarUrl;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  MiniFileObjectOut? photoFile;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProfileOut &&
      other.lastName == lastName &&
      other.firstName == firstName &&
-     other.avatarUrl == avatarUrl;
+     other.avatarUrl == avatarUrl &&
+     other.photoFile == photoFile;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (lastName.hashCode) +
     (firstName.hashCode) +
-    (avatarUrl.hashCode);
+    (avatarUrl.hashCode) +
+    (photoFile == null ? 0 : photoFile!.hashCode);
 
   @override
-  String toString() => 'ProfileOut[lastName=$lastName, firstName=$firstName, avatarUrl=$avatarUrl]';
+  String toString() => 'ProfileOut[lastName=$lastName, firstName=$firstName, avatarUrl=$avatarUrl, photoFile=$photoFile]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'last_name'] = this.lastName;
       json[r'first_name'] = this.firstName;
       json[r'avatar_url'] = this.avatarUrl;
+    if (this.photoFile != null) {
+      json[r'photo_file'] = this.photoFile;
+    } else {
+      json[r'photo_file'] = null;
+    }
     return json;
   }
 
@@ -70,6 +86,7 @@ class ProfileOut {
         lastName: mapValueOfType<String>(json, r'last_name')!,
         firstName: mapValueOfType<String>(json, r'first_name')!,
         avatarUrl: mapValueOfType<String>(json, r'avatar_url')!,
+        photoFile: MiniFileObjectOut.fromJson(json[r'photo_file']),
       );
     }
     return null;

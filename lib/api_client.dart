@@ -203,6 +203,8 @@ class ApiClient {
           return ManyUserRolesOut.fromJson(value);
         case 'ManyUsersInDB':
           return ManyUsersInDB.fromJson(value);
+        case 'MiniFileObjectOut':
+          return MiniFileObjectOut.fromJson(value);
         case 'MiniRoleOut':
           return MiniRoleOut.fromJson(value);
         case 'MiniUserRoleOut':

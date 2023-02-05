@@ -195,6 +195,55 @@ class UsersApi {
     return null;
   }
 
+  /// Download User Photo
+  ///
+  /// <strong>Scopes: </strong> me,
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] userId (required):
+  Future<Response> downloadUserPhotoWithHttpInfo(String userId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/users/{user_id}/download-photo'
+      .replaceAll('{user_id}', userId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Download User Photo
+  ///
+  /// <strong>Scopes: </strong> me,
+  ///
+  /// Parameters:
+  ///
+  /// * [String] userId (required):
+  Future<void> downloadUserPhoto(String userId,) async {
+    final response = await downloadUserPhotoWithHttpInfo(userId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// List Scopes
   ///
   /// <strong>Scopes: </strong> me,                                         <br />                                         <br />                                         <strong>Scopes: </strong> me, 
@@ -590,6 +639,77 @@ class UsersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserOut',) as UserOut;
+    
+    }
+    return null;
+  }
+
+  /// Upload User Photo
+  ///
+  /// <strong>Scopes: </strong> me,
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] userId (required):
+  ///
+  /// * [MultipartFile] fileToUpload (required):
+  Future<Response> uploadUserPhotoWithHttpInfo(String userId, MultipartFile fileToUpload,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/users/{user_id}/upload-photo'
+      .replaceAll('{user_id}', userId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['multipart/form-data'];
+
+    bool hasFields = false;
+    final mp = MultipartRequest('PUT', Uri.parse(path));
+    if (fileToUpload != null) {
+      hasFields = true;
+      mp.fields[r'file_to_upload'] = fileToUpload.field;
+      mp.files.add(fileToUpload);
+    }
+    if (hasFields) {
+      postBody = mp;
+    }
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Upload User Photo
+  ///
+  /// <strong>Scopes: </strong> me,
+  ///
+  /// Parameters:
+  ///
+  /// * [String] userId (required):
+  ///
+  /// * [MultipartFile] fileToUpload (required):
+  Future<ProfileOut?> uploadUserPhoto(String userId, MultipartFile fileToUpload,) async {
+    final response = await uploadUserPhotoWithHttpInfo(userId, fileToUpload,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProfileOut',) as ProfileOut;
     
     }
     return null;

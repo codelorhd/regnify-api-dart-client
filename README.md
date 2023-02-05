@@ -75,6 +75,7 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**adminChangeUserPassword**](doc//UsersApi.md#adminchangeuserpassword) | **PUT** /users/{user_id}/admin-change-user-password | Admin Change User Password
 *UsersApi* | [**changeUserPassword**](doc//UsersApi.md#changeuserpassword) | **PUT** /users/change-user-password | Change User Password
 *UsersApi* | [**createUser**](doc//UsersApi.md#createuser) | **POST** /users/ | Create User
+*UsersApi* | [**downloadUserPhoto**](doc//UsersApi.md#downloaduserphoto) | **GET** /users/{user_id}/download-photo | Download User Photo
 *UsersApi* | [**listScopes**](doc//UsersApi.md#listscopes) | **GET** /users/list-scopes | List Scopes
 *UsersApi* | [**readUser**](doc//UsersApi.md#readuser) | **GET** /users/{user_id} | Read User
 *UsersApi* | [**readUserMe**](doc//UsersApi.md#readuserme) | **GET** /users/token | Read User Me
@@ -82,6 +83,7 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**requestPasswordChange**](doc//UsersApi.md#requestpasswordchange) | **POST** /users/request-password-change | Request Password Change
 *UsersApi* | [**resendInvite**](doc//UsersApi.md#resendinvite) | **POST** /users/resend-invite | Resend Invite
 *UsersApi* | [**updateUser**](doc//UsersApi.md#updateuser) | **PUT** /users/{user_id} | Update User
+*UsersApi* | [**uploadUserPhoto**](doc//UsersApi.md#uploaduserphoto) | **PUT** /users/{user_id}/upload-photo | Upload User Photo
 
 
 ## Documentation For Models
@@ -97,6 +99,7 @@ Class | Method | HTTP request | Description
  - [ManySystemScopeOut](doc//ManySystemScopeOut.md)
  - [ManyUserRolesOut](doc//ManyUserRolesOut.md)
  - [ManyUsersInDB](doc//ManyUsersInDB.md)
+ - [MiniFileObjectOut](doc//MiniFileObjectOut.md)
  - [MiniRoleOut](doc//MiniRoleOut.md)
  - [MiniUserRoleOut](doc//MiniUserRoleOut.md)
  - [OrderBy](doc//OrderBy.md)

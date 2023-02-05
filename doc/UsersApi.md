@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**adminChangeUserPassword**](UsersApi.md#adminchangeuserpassword) | **PUT** /users/{user_id}/admin-change-user-password | Admin Change User Password
 [**changeUserPassword**](UsersApi.md#changeuserpassword) | **PUT** /users/change-user-password | Change User Password
 [**createUser**](UsersApi.md#createuser) | **POST** /users/ | Create User
+[**downloadUserPhoto**](UsersApi.md#downloaduserphoto) | **GET** /users/{user_id}/download-photo | Download User Photo
 [**listScopes**](UsersApi.md#listscopes) | **GET** /users/list-scopes | List Scopes
 [**readUser**](UsersApi.md#readuser) | **GET** /users/{user_id} | Read User
 [**readUserMe**](UsersApi.md#readuserme) | **GET** /users/token | Read User Me
@@ -19,6 +20,7 @@ Method | HTTP request | Description
 [**requestPasswordChange**](UsersApi.md#requestpasswordchange) | **POST** /users/request-password-change | Request Password Change
 [**resendInvite**](UsersApi.md#resendinvite) | **POST** /users/resend-invite | Resend Invite
 [**updateUser**](UsersApi.md#updateuser) | **PUT** /users/{user_id} | Update User
+[**uploadUserPhoto**](UsersApi.md#uploaduserphoto) | **PUT** /users/{user_id}/upload-photo | Upload User Photo
 
 
 # **adminChangeUserPassword**
@@ -152,6 +154,50 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **downloadUserPhoto**
+> downloadUserPhoto(userId)
+
+Download User Photo
+
+<strong>Scopes: </strong> me,
+
+### Example
+```dart
+import 'package:regnify_core/api.dart';
+// TODO Configure OAuth2 access token for authorization: OAuth2PasswordBearer
+//defaultApiClient.getAuthentication<OAuth>('OAuth2PasswordBearer').accessToken = 'YOUR_ACCESS_TOKEN';
+
+final api_instance = UsersApi();
+final userId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+
+try {
+    api_instance.downloadUserPhoto(userId);
+} catch (e) {
+    print('Exception when calling UsersApi->downloadUserPhoto: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[OAuth2PasswordBearer](../README.md#OAuth2PasswordBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -459,6 +505,53 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **uploadUserPhoto**
+> ProfileOut uploadUserPhoto(userId, fileToUpload)
+
+Upload User Photo
+
+<strong>Scopes: </strong> me,
+
+### Example
+```dart
+import 'package:regnify_core/api.dart';
+// TODO Configure OAuth2 access token for authorization: OAuth2PasswordBearer
+//defaultApiClient.getAuthentication<OAuth>('OAuth2PasswordBearer').accessToken = 'YOUR_ACCESS_TOKEN';
+
+final api_instance = UsersApi();
+final userId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final fileToUpload = BINARY_DATA_HERE; // MultipartFile | 
+
+try {
+    final result = api_instance.uploadUserPhoto(userId, fileToUpload);
+    print(result);
+} catch (e) {
+    print('Exception when calling UsersApi->uploadUserPhoto: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String**|  | 
+ **fileToUpload** | **MultipartFile**|  | 
+
+### Return type
+
+[**ProfileOut**](ProfileOut.md)
+
+### Authorization
+
+[OAuth2PasswordBearer](../README.md#OAuth2PasswordBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

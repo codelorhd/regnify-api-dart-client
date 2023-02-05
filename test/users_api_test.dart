@@ -42,6 +42,15 @@ void main() {
       // TODO
     });
 
+    // Download User Photo
+    //
+    // <strong>Scopes: </strong> me,
+    //
+    //Future downloadUserPhoto(String userId) async
+    test('test downloadUserPhoto', () async {
+      // TODO
+    });
+
     // List Scopes
     //
     // <strong>Scopes: </strong> me,                                         <br />                                         <br />                                         <strong>Scopes: </strong> me, 
@@ -100,6 +109,15 @@ void main() {
     //
     //Future<UserOut> updateUser(String userId, UserUpdate userUpdate) async
     test('test updateUser', () async {
+      // TODO
+    });
+
+    // Upload User Photo
+    //
+    // <strong>Scopes: </strong> me,
+    //
+    //Future<ProfileOut> uploadUserPhoto(String userId, MultipartFile fileToUpload) async
+    test('test uploadUserPhoto', () async {
       // TODO
     });
 

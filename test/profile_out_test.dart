@@ -31,6 +31,11 @@ void main() {
       // TODO
     });
 
+    // MiniFileObjectOut photoFile
+    test('to test the property `photoFile`', () async {
+      // TODO
+    });
+
 
   });
 
